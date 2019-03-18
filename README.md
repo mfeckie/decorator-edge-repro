@@ -1,57 +1,25 @@
-# decorator-edge-repro
+## Steps to reproduce
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+`yarn start`
 
-## Prerequisites
+Visit the page in MS Edge 18
 
-You will need the following things properly installed on your computer.
+See in the console `Object doesn't support property or method 'apply'`
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+### More information
 
-## Installation
+This only appears with the combination of 
 
-* `git clone <repository-url>` this repository
-* `cd decorator-edge-repro`
-* `npm install`
+- ember-decorators
+- ember-cli-typescript@1.5.0
 
-## Running / Development
+It does not happen with ember-cli-typescript@2.x
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+The error seems to occur at https://github.com/ember-decorators/ember-decorators/blob/master/packages/utils/addon/decorator.js#L89
 
-### Code Generators
+It seems that the item returned by `decorate(fn)` is not correctly defined for some reason.
 
-Make use of the many generators for code, try `ember help generate` for more details
+![console log](images/console-edge.png)
 
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Linting
-
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+Trying to do `decorator(fn)()` returns 
+`unable to get property 'writable' of undefined or null reference`
