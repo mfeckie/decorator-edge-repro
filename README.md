@@ -13,7 +13,7 @@ This only appears with the combination of
 - ember-decorators
 - ember-cli-typescript@1.5.0
 
-It does not happen with ember-cli-typescript@2.x
+It does not happen with `ember-cli-typescript@2.x`
 
 The error seems to occur at https://github.com/ember-decorators/ember-decorators/blob/master/packages/utils/addon/decorator.js#L89
 
