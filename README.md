@@ -6,6 +6,10 @@ Visit the page in MS Edge 18
 
 See in the console `Object doesn't support property or method 'apply'`
 
+Note that the VM from modern.ie has Edge 17 and seems to be unable to update to Edge 18.
+
+Browserstack has Edge 18 available.
+
 ### More information
 
 This only appears with the combination of 
